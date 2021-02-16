@@ -1,0 +1,34 @@
+Hi Christian,
+
+Here’s some of the things we spoke about today, I’ve also attached the tutorial I mentioned. 
+
+Here’s the sklearn links we talked about:
+
+Here’s the page on model selection: https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
+Here’s the examples of cross validation - particularly look at stratified cross validation: https://scikit-learn.org/stable/modules/cross_validation.html
+This is the grid search CV I spoke about - it’s useful for trying different model parameters without having to monitor it too closely: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+Here’s another tutorial on text in sklearn: https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
+
+First I’d try classifiers like Naive Bayes, and Linear-SVC (SVM), and as you’ve already done logistic regression. I’d also play with the different hyperparameter values like C, try values of -10,-1,1,10,100. I’d also look at ngrams (single words, pairs of words, triples of words) and set those too. 
+
+
+Here’s the link to the flask mega tutorial: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+If you need to deploy something in computing it’s always worth asking Mahamadou. 
+
+Here’s the link to plotly for drawing graphs in python: https://plotly.com/chart-studio-help/tutorials/
+This GitHub repository shows how to create some of them: https://github.com/roryduthie/ArgAn_Backend/blob/main/app/routes.py
+Then this one shows how you embed the html in a page (just uses divs): https://github.com/roryduthie/ArgAn/blob/main/app/routes.py
+
+Here’s a web project where I’ve deployed a machine learning model, if you go to app, static, model, you’ll see the pickle file of the model: https://github.com/roryduthie/ArgMine
+
+Finally here’s a couple of links around using Free TPU’s on Colab: 
+https://heartbeat.fritz.ai/step-by-step-use-of-google-colab-free-tpu-75f8629492b3
+https://towardsdatascience.com/using-tpus-on-google-colab-966239d24573
+https://towardsdatascience.com/how-to-colab-with-tpu-98e0b4230d9c
+
+(If the townrdsdatascience links ask you to sign up just open them in private browsing)
+
+Hope that helps, and like I say feel free to drop me an email with any problems or questions.
+
+Cheers,
+Rory
