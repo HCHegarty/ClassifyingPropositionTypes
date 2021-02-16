@@ -1,0 +1,8 @@
+2000: Token indices sequence length is longer than the specified maximum sequence length for this model (561 > 512). Running this sequence through the model will result in indexing errors
+1000: shape = 1000, 421, crash
+500 entries: shape = 500, 130 score = 0.672
+750 entries: shape = 750, 130 score = 0.638
+900: shape = 871, 421, crash
+800 entries: shape = 800, 130 score = 0.605
+870 entries: shape = 870, 130 score = 0.642
+871 entries: shape = 871, 421 crash
