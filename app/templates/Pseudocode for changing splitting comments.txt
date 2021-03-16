@@ -1,0 +1,27 @@
+Pseudocode for changing splitting comments with multiple sentences into one sentence.
+
+Intention:
+
+read in each line of the dataset file
+search through for lines with multiple sentences
+if single sentence, add to new dataset with no changes
+if multiple sentences, split them into separate lines and add to new dataset to be manually tagged later
+
+Outline:
+
+Read file ("FormattedTrainingDataset.csv")
+Write file ("PartiallyUntaggedDataset.csv")
+
+read line from file
+if (line contains multiple sentences)
+    split at ". "
+    for each sentence from split
+        if (first sentence)
+            append '."\n'
+        if (last sentence)
+            add '"' to start of sentence and append '\n'
+        else
+            add '"' to start of sentence and append '."\n'
+else
+    append '\n'
+    write line into file
