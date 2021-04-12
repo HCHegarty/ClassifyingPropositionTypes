@@ -1,5 +1,5 @@
 
-for x in range(194, 1420):
+for x in range(0, 1420):
     ##add the 0s in front of the IDs in the dataset
     rightID = str(x)
     if len(rightID) == 3:
@@ -14,46 +14,52 @@ for x in range(194, 1420):
 
     ##Open and read annotation file into string
     try:
+    
         f = open(annotateFileName, "r")
         annotationLine = f.readline()
         f.close()
-        ##Split string and remove everything but the list of annotations
+        ##Split string and remove everything but the list of propositions and offsets of where the propositions are in the comment
+        ##trims all before proposition list
         x = annotationLine.split('"prop_labels": [')
-        annotationsSecondSplit = x[1].split('], "prop_offsets":')
-        annotationsSecondSplit
+        ##splits propositions and offsets and trims middle unnecessary parts
+        annotationsSecondSplit = x[1].split('], "prop_offsets": [[')
+        ##trims all code after after offsets
+        annotationThirdSplit = annotationsSecondSplit[1].split(']], "reas')
+        ## creates list of propositions
         annotations = annotationsSecondSplit[0].split(", ")
-        print(annotations)
-        
-        
-    except:
-        print("file doesnt exist")
+        ## creates list of offsets in the format "X, X"
+        propOffsets = annotationThirdSplit[0].split("], [")
+        #print(propOffsets)
     
-    try:
+        
+    
         f = open(textFileName, "r")
-        unformattedTextLine = f.readline()
+        wholeText = f.readlines()
+        wallOfText = wholeText[0]
         f.close()
-        ##Removes '.' on last sentence to allow split to work properly
-        unformattedTextLine = unformattedTextLine[:-1]
-        print(unformattedTextLine)
-        textLine = unformattedTextLine.replace('"', '""')
-        
-        ##split string into each sentence in the file
-        splitText = textLine.split('. ')
-        ## re-add '.' to the end of each sentence
-        for index, text in enumerate(splitText):
-	        splitText[index] = text + "."
-        
+
         f = open("test.txt", "a")
 
-        for index, lines in enumerate(splitText):
-            if annotations[index] != '"testimony"' and annotations[index] != '"reference"':
-                dataLine = '"' + splitText[index] + '",' + annotations[index] + "\n"
+        #match offsets to sentences in text
+        for index, offsets in enumerate(propOffsets):
+            print(offsets)
+            offset = offsets.split(', ')
+            a = int(offset[0])
+            b = int(offset[1])
+            if a!=0:
+                a=a+1
+            propText = wallOfText[a:b]
+            #print(propText)
+            dataLine = '"' + propText+ '",' + annotations[index] + "\n"
+            if annotations[index] != '"testimony"' and annotations[index] != '"reference"':                     
                 print(dataLine)
                 f.write(dataLine)
         f.close()
+
     except:
         print("file doesnt exist")
-    
+
 print("SCRIPT COMPLETE")
     
 input()
+
